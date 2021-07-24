@@ -14,8 +14,8 @@ jobs:
         target:
           - x86_64-unknown-linux-musl
           - aarch64-unknown-linux-musl
-          - armv7-unknown-linux-musleabihf
-          - arm-unknown-linux-musleabihf
+          - armv7-unknown-linux-musleabi
+          - arm-unknown-linux-musleabi
           - mips-unknown-linux-musl
           - mipsel-unknown-linux-musl
           - mips64-unknown-linux-gnuabi64
@@ -40,16 +40,16 @@ jobs:
             strip: false
             compress: true
           - os: ubuntu-latest
-            target: armv7-unknown-linux-musleabihf
-            artifact_name: target/armv7-unknown-linux-musleabihf/release/miniserve
-            release_name: armv7-unknown-linux-musleabihf
+            target: armv7-unknown-linux-musleabi
+            artifact_name: target/armv7-unknown-linux-musleabi/release/miniserve
+            release_name: armv7-unknown-linux-musleabi
             cross: true
             strip: false
             compress: true
           - os: ubuntu-latest
-            target: arm-unknown-linux-musleabihf
-            artifact_name: target/arm-unknown-linux-musleabihf/release/miniserve
-            release_name: arm-unknown-linux-musleabihf
+            target: arm-unknown-linux-musleabi
+            artifact_name: target/arm-unknown-linux-musleabi/release/miniserve
+            release_name: arm-unknown-linux-musleabi
             cross: true
             strip: false
             compress: true
