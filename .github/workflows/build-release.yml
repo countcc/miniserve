@@ -28,7 +28,7 @@ jobs:
             compress: true
             cargo_flags: ""
           - os: ubuntu-latest
-            target: armv7-unknown-linux-musleabihf
+            target: armv7-unknown-linux-musleabi
             compress: true
             cargo_flags: ""
           - os: ubuntu-latest
@@ -36,7 +36,7 @@ jobs:
             compress: true
             cargo_flags: ""
           - os: ubuntu-latest
-            target: arm-unknown-linux-musleabihf
+            target: arm-unknown-linux-musleabi
             compress: true
             cargo_flags: ""
           - os: ubuntu-latest
@@ -183,11 +183,11 @@ jobs:
           name: x86_64-unknown-linux-musl
           path: target/x86_64-unknown-linux-musl/release
 
-      - name: Download artifact armv7-unknown-linux-musleabihf
+      - name: Download artifact armv7-unknown-linux-musleabi
         uses: actions/download-artifact@v3
         with:
-          name: armv7-unknown-linux-musleabihf
-          path: target/armv7-unknown-linux-musleabihf/release
+          name: armv7-unknown-linux-musleabi
+          path: target/armv7-unknown-linux-musleabi/release
 
       - name: podman login
         run: podman login --username ${{ secrets.DOCKERHUB_USERNAME }} --password ${{ secrets.DOCKERHUB_TOKEN }} docker.io
@@ -215,7 +215,7 @@ jobs:
         run: podman build --format docker --platform linux/amd64 --manifest miniserve-alpine -f Containerfile.alpine target/x86_64-unknown-linux-musl/release
 
       - name: podman build linux/arm (alpine edition)
-        run: podman build --format docker --platform linux/arm/v7 --manifest miniserve-alpine -f Containerfile.alpine target/armv7-unknown-linux-musleabihf/release
+        run: podman build --format docker --platform linux/arm/v7 --manifest miniserve-alpine -f Containerfile.alpine target/armv7-unknown-linux-musleabi/release
 
       - name: podman manifest push latest (alpine edition)
         run: podman manifest push miniserve-alpine docker.io/svenstaro/miniserve:alpine
